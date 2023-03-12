@@ -2,10 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\ {
+    Request,
+    Response
+};
+use App\Services\ {
+    UserService
+};
 
 class UserController extends Controller
 {
+    Protected $user_service;
+
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +26,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'data' => $this->user_service->index()
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -34,7 +49,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json([
+            'data' => 'Store'
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -45,7 +62,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json([
+            'data' => 'Show: '.$id
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -68,7 +87,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return response()->json([
+            'data' => 'Update: '.$id
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -79,6 +100,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return response()->json([
+            'data' => 'Destroy: '.$id
+        ], Response::HTTP_OK);
     }
 }
