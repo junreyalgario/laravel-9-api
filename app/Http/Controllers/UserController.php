@@ -6,9 +6,9 @@ use Illuminate\Http\ {
     Request,
     Response
 };
-use App\Services\ {
-    UserService
-};
+use App\Contracts\UserServiceInterface as UserService;
+
+// use App\Contracts\ServiceInterface;
 
 class UserController extends Controller
 {
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function index()
     {
         return response()->json([
-            'data' => $this->user_service->index()
+            'data' => $this->user_service->paginate(10)
         ], Response::HTTP_OK);
     }
 

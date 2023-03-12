@@ -2,16 +2,23 @@
 
 namespace App\Services;
 
+use App\Contracts\ {
+	BaseService,
+	UserServiceInterface
+};
 use App\Models\ {
 	User
 };
-use App\Repositories\UserRepository;
 
-class UserService
+class UserService extends BaseService implements UserServiceInterface
 {
-	public function index()
+	public function paginate($item_per_page = null)
 	{
-		$repo = new UserRepository();
-		return $repo->all();
+		return User::paginate($item_per_page);
+	}
+
+	public function changePassword($data)
+	{
+
 	}
 }
