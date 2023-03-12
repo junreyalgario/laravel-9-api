@@ -3,9 +3,17 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Services interface and imlementation list
+     */
+    protected $services = [
+        'App\Contracts\Services\UserServiceInterface' => 'App\Services\UserService'
+    ];
+
     /**
      * Register any application services.
      *
@@ -13,7 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        foreach ($this->services as $interface => $implementation) {
+            App::bind($interface, $implementation);
+        }
     }
 
     /**
