@@ -11,7 +11,8 @@ class AppServiceProvider extends ServiceProvider
      * Services interface and imlementation list
      */
     protected $services = [
-        'App\Contracts\Services\UserServiceInterface' => 'App\Services\UserService'
+        'App\Contracts\Services\UserServiceInterface' => 'App\Services\UserService',
+        'App\Contracts\Services\ProductServiceInterface' => 'App\Services\ProductService'
     ];
 
     /**

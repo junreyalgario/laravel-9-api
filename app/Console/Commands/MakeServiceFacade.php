@@ -50,7 +50,9 @@ class MakeServiceFacade extends GeneratorCommand
             throw new InvalidArgumentException("Missing required argument service facades name");
         }
         $stub = parent::replaceClass($stub, $name);
-        return str_replace('DummyService', $this->argument('name'), $stub);
+        $concreteClassName = str_replace('Facades', '', $this->argument('name'));
+        $stub = str_replace('DummyServiceInterface', $concreteClassName.'Interface', $stub);
+        return str_replace('DummyServiceFacades', $this->argument('name'), $stub);
     }
 
 

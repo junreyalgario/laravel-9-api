@@ -50,7 +50,7 @@ class MakeServiceInterface extends GeneratorCommand
             throw new InvalidArgumentException("Missing required argument service interface name");
         }
         $stub = parent::replaceClass($stub, $name);
-        return str_replace('DummyService', $this->argument('name'), $stub);
+        return str_replace('DummyServiceInterface', $this->argument('name'), $stub);
     }
 
 

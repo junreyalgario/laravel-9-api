@@ -47,11 +47,11 @@ class MakeServiceConcrete extends GeneratorCommand
     protected function replaceClass($stub, $name)
     {
         // Run commands to generate service interface and facade class
-        Artisan::call('make:service-interface '.$this->argument('name'));
-        Artisan::call('make:service-facades '.$this->argument('name'));
+        Artisan::call('make:service-interface '.$this->argument('name').'Interface');
+        Artisan::call('make:service-facades '.$this->argument('name').'Facades');
 
         if(!$this->argument('name')){
-            throw new InvalidArgumentException("Missing required argument model name");
+            throw new InvalidArgumentException("Missing required argument service name");
         }
         $stub = parent::replaceClass($stub, $name);
         return str_replace('DummyService', $this->argument('name'), $stub);

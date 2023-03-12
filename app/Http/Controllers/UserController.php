@@ -7,6 +7,7 @@ use Illuminate\Http\ {
     Response
 };
 use UserService;
+use ProductService;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         return response()->json([
-            'data' => UserService::paginate(10)
+            'data' => ProductService::paginate(10)
         ], Response::HTTP_OK);
     }
 
